@@ -21,9 +21,8 @@ jobs:
 
     - name: Build with Maven
     - run: mvn -B package --file pom.xml
-    - run: mkdir staging && cp target/*jar-with-dependencies.jar staging
+    - run: mkdir staging && cp target/*.jar staging
     - uses: actions/upload-artifact@v3
-      if: success()
       with:
         name: Package
         path: staging
