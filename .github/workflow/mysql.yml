@@ -1,0 +1,25 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Set up MySQL Server
+
+on:
+  push:
+  
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: mirromutth/mysql-action@v1.1
+      with:
+        host port: 3306
+        container port: 5306 
+        character set server: 'utf8' 
+        collation server: 'utf8_general_ci'
+        mysql version: '8.0'
+        mysql database: 'some_test'
+        mysql root password: root
+        mysql user: 'developer'
+        mysql password: root
