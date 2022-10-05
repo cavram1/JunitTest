@@ -1,6 +1,10 @@
 
 public class Fraction {
 
+    /**
+     * Comment for GitHub
+     */
+
     private int dividend = 1;
     private int devisor = 1;
 
