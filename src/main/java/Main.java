@@ -1,3 +1,5 @@
+import java.sql.Connection;
+
 public class Main {
     public static void main(String[] args) {
         int dividend = Integer.parseInt(args[0]);
@@ -7,5 +9,8 @@ public class Main {
         f.shorten();
 
         System.out.println(f.shorten());
+
+        Connection d = DbInstance.getInstance();
+        System.out.println(d);
     }
 }
