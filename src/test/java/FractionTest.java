@@ -110,6 +110,49 @@ class FractionTest {
         });
     }
 
+    @Test
+    @Order(7)
+    void deleteEntry() {
+        Assertions.assertDoesNotThrow(() -> {
+            Connection c = connect("testdb");//mit keiner datenbank verbinden
+
+            Statement s = c.createStatement();
+            s.executeUpdate("DELETE FROM testtable");
+
+
+            s.close();
+            c.close();
+        });
+    }
+
+    @Test
+    @Order(8)
+    void deleteTable() {
+        Assertions.assertDoesNotThrow(() -> {
+            Connection c = connect("testdb");//mit keiner datenbank verbinden
+
+            Statement s = c.createStatement();
+            s.executeUpdate("DROP TABLE testtable");
+
+            s.close();
+            c.close();
+        });
+    }
+
+    @Test
+    @Order(9)
+    void deleteDb() {
+        Assertions.assertDoesNotThrow(() -> {
+            Connection c = connect("testdb");//mit keiner datenbank verbinden
+
+            Statement s = c.createStatement();
+            s.executeUpdate("DROP DATABASE testdb");
+
+            s.close();
+            c.close();
+        });
+    }
+
 
     @Test
     void getDividend() {
