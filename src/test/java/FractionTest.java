@@ -56,6 +56,61 @@ class FractionTest {
         });
     }
 
+
+    @Test
+    @Order(3)
+    void connectToSpecificDb() {
+
+        Assertions.assertDoesNotThrow(() -> connect("testdb"));
+    }
+
+    @Test
+    @Order(4)
+    void creatTable() {
+        Assertions.assertDoesNotThrow(() -> {
+            Connection c = connect("testdb");//mit keiner datenbank verbinden
+
+            Statement s = c.createStatement();
+            s.executeUpdate("CREATE TABLE testtable (mycolumn VARCHAR(255) NULL)");
+
+            s.close();
+            c.close();
+        });
+    }
+
+    @Test
+    @Order(5)
+    void insertIntoTable() {
+        Assertions.assertDoesNotThrow(() -> {
+            Connection c = connect("testdb");//mit keiner datenbank verbinden
+
+            Statement s = c.createStatement();
+            s.executeUpdate("INSERT INTO testtable (mycolumn) VALUES ('some text')");
+
+            s.close();
+            c.close();
+        });
+    }
+
+    @Test
+    @Order(6)
+    void selectFromTable() {
+        Assertions.assertDoesNotThrow(() -> {
+            Connection c = connect("testdb");//mit keiner datenbank verbinden
+
+            Statement s = c.createStatement();
+            ResultSet r = s.executeQuery("SELECT * FROM testtable LIMIT 1");
+
+            if(r.first()){
+                Assertions.assertEquals(r.getString("myColumn"), "some text");
+            }
+
+            s.close();
+            c.close();
+        });
+    }
+
+
     @Test
     void getDividend() {
         Fraction f = new Fraction(1, 10);
