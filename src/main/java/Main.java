@@ -9,8 +9,5 @@ public class Main {
         f.shorten();
 
         System.out.println(f.shorten());
-
-        Connection d = DbInstance.getInstance();
-        System.out.println(d);
     }
 }
