@@ -156,37 +156,4 @@ class FractionTest {
         Assertions.assertEquals("7/16", result.toString());
     }
 
-
-    @Test
-    @Order(1)
-    void workflow() {
-        try {
-            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:8080/Fraction?useSSL=false",
-                    "root", "root");
-            //Connection c = DbInstance.getInstance();
-            Assertions.assertNotNull(c);
-
-            PreparedStatement createdb = c.prepareStatement("CREATE DATABASE dbFraction");
-            Assertions.assertNotNull(createdb.execute());
-            c.close();
-
-            c = DriverManager.getConnection("jdbc:mysql://localhost:8080/Fraction?useSSL=false", "root",
-                    "root");
-            Assertions.assertNotNull(c);
-
-            PreparedStatement createtable = c.prepareStatement("CREATE TABLE dbFraction.Number (number INT)");
-            Assertions.assertNotNull(createtable.execute());
-
-            PreparedStatement insertnum = c.prepareStatement("INSERT INTO dbFraction.Number (number) values" +
-                    "(1)");
-            Assertions.assertNotNull(insertnum.execute());
-
-            PreparedStatement show = c.prepareStatement("SELECT * FROM dbFraction.Number");
-            Assertions.assertNotNull(show.execute());
-            System.out.println(show);
-
-        } catch (SQLException sqlException) {
-
-        }
-    }
 }
