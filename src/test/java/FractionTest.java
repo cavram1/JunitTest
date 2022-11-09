@@ -95,7 +95,7 @@ class FractionTest {
             Statement s = c.createStatement();
             ResultSet r = s.executeQuery("SELECT * FROM testtable LIMIT 1");
 
-            if(r.first()){
+            if(r.next()){
                 Assertions.assertEquals(r.getString("myColumn"), "some text");
             }
 
