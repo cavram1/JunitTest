@@ -11,10 +11,10 @@ class FractionTest {
     private Connection connect(String db) throws SQLException {
         Connection con = null;
 
-            if (db.length() > 0) {
+            if (db.length() <= 0) {
                 con = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "root");
             } else {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "root");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306" + db, "root", "root");
             }
         return con;
     }
