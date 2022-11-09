@@ -14,7 +14,7 @@ class FractionTest {
             if (db.length() <= 0) {
                 con = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "root");
             } else {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306" + db, "root", "root");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + db, "root", "root");
             }
         return con;
     }
